@@ -4,7 +4,6 @@
 pragma solidity 0.8.7;
 
 //* A Contract where only owner gives grant to beneficiary
-//* The beneficiary address must be an EOA address (not a contract address)
 //* For security check the grant is locked for a while before a benefeciary can withdraw 
 //* Owner of the grant have access to revert the grant before locked period elapsed
 //* Beneficiary can see the amount allocated before specifying amount to withdraw
@@ -91,7 +90,6 @@ contract Grant{
         benefactor.AmountAllocated -= _withdrawAmount;
 
         payable(user).transfer(_withdrawAmount);
-
 
     }
 
