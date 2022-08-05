@@ -68,9 +68,31 @@ contract Grant{
         BenefeciaryProperties storage benefactor = beneficiaryProperties[ticketNumber];
         benefactor.BeneficiaryAddress = _beneficiary;
         benefactor.AmountAllocated =  msg.value;
-        benefactor.timeAllocated = block.timestamp + _time;  
+        benefactor.timeAllocated = block.timestamp + (_time * 1 hours); 
+
+
+        ticketNumber++; 
     }
 
+//* Beneficairy can decide to withdraw part or all the money allocated to him/her
+    function beneficiaryWithdraw(uint _ticketNumber, uint _withdrawAmount) external {
+        BenefeciaryProperties storage benefactor = beneficiaryProperties[_ticketNumber];
+        address user = benefactor.BeneficiaryAddress;
+        if(user != msg.sender){
+            revert UserError("You are not a benefactor");
+        }
+        uint amount = benefactor.AmountAllocated;
+        if(amount < 0){
+            revert UserError("You have no money");
+        }
+        if(_withdrawAmount > amount){
+            revert UserError("Insufficient Balance");
+        }
+        benefactor.AmountAllocated -= _withdrawAmount;
 
+        payable(user).transfer(_withdrawAmount);
+
+
+    }
 
 }
