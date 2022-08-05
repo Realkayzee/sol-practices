@@ -17,13 +17,14 @@ contract Grant{
 
     address owner;
     // A unique id declaration for every contract created
-    uint ID = 1;
+    uint ticketNumber = 1;
     enum Status{
         grantCreated,
         grantWithdraen,
         grantPartlyWithdrawn, 
         grantCancelled
     }
+    error UserError(string);
     
 
 
@@ -32,7 +33,7 @@ contract Grant{
     struct BenefeciaryProperties {
         address BeneficiaryAddress;
         uint AmountAllocated;
-        uint time;
+        uint timeAllocated;
         Status status;
     }
 
@@ -43,20 +44,32 @@ contract Grant{
 
 
     //* Modifiers
+    modifier onlyOwner{
+        if (msg.sender != owner){
+            revert UserError("Not Owner");
+        }
 
+        _;
+
+    }
 
 
     constructor(){
         owner = msg.sender;
     }
 
-    
+
 
 
 
     //**********************************Functions************************************/
 
-    function createGrant
+    function createGrant(address _beneficiary, uint _time) external payable onlyOwner {
+        BenefeciaryProperties storage benefactor = beneficiaryProperties[ticketNumber];
+        benefactor.BeneficiaryAddress = _beneficiary;
+        benefactor.AmountAllocated =  msg.value;
+        benefactor.timeAllocated = block.timestamp + _time;  
+    }
 
 
 
