@@ -17,13 +17,7 @@ contract Grant{
     address owner;
     // A unique id declaration for every contract created
     uint ticketNumber = 1;
-    enum Status{
-        grantCreated,
-        grantWithdraen,
-        grantPartlyWithdrawn, 
-        grantCancelled
-    }
-    error UserError(string);
+    error UserError(string); // Custom error
 
     
 
@@ -34,7 +28,8 @@ contract Grant{
         address BeneficiaryAddress;
         uint AmountAllocated;
         uint timeAllocated;
-        Status status;
+        bool grantCreated;
+        bool grantrevert;
     }
     uint[] allticketNumber; 
     BeneficiaryProperties[] _benefactor;
@@ -78,8 +73,8 @@ contract Grant{
         benefactor.BeneficiaryAddress = _beneficiary;
         benefactor.AmountAllocated =  msg.value;
         benefactor.timeAllocated = block.timestamp + (_time * 1 hours); 
+        benefactor.grantCreated = true;
         allticketNumber.push(ticketNumber);
-
         ticketNumber++; 
     }
 
@@ -93,10 +88,10 @@ contract Grant{
         }
         uint amount = benefactor.AmountAllocated;
         if(amount < 0){
-            revert UserError("You have no money");
+            revert UserError("You have no money in your grant");
         }
         if(_withdrawAmount > amount){
-            revert UserError("Insufficient Balance");
+            revert UserError("Amount Specified is greater than amount in grant");
         }
         benefactor.AmountAllocated -= _withdrawAmount;
 
@@ -108,7 +103,11 @@ contract Grant{
     function revertGrant(uint _ticketNumber) external onlyOwner {
         BeneficiaryProperties storage benefactor = beneficiaryProperties[_ticketNumber];
         uint amount = benefactor.AmountAllocated;
+        if(amount == 0){
+            revert UserError("No money Allocated for this grant");
+        }
         benefactor.AmountAllocated = 0;
+        benefactor.grantrevert = true;
         payable(msg.sender).transfer(amount); // owner revert the total amount allocated for this grant;
 
     }
