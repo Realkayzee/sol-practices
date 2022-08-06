@@ -19,6 +19,10 @@ contract Grant{
     uint ticketNumber = 1;
     error UserError(string); // Custom error
 
+    //* Events
+    event _createGrant(address benefactor, uint256 allocatedTime, uint amountAllocated);
+    event _withdraw(uint256 amountInGrant, uint256 amountToWithdraw);
+    event _revert(uint256 revertTicket);
     
 
 
@@ -69,12 +73,16 @@ contract Grant{
     //**********************************Functions************************************/
 
     function createGrant(address _beneficiary, uint _time) external payable onlyOwner {
+        require(_beneficiary != address(0)); // sanity check
         BeneficiaryProperties storage benefactor = beneficiaryProperties[ticketNumber];
         benefactor.BeneficiaryAddress = _beneficiary;
         benefactor.AmountAllocated =  msg.value;
         benefactor.timeAllocated = block.timestamp + (_time * 1 hours); 
         benefactor.grantCreated = true;
         allticketNumber.push(ticketNumber);
+
+        emit _createGrant(benefactor.BeneficiaryAddress, benefactor.timeAllocated, benefactor.AmountAllocated);
+
         ticketNumber++; 
     }
 
@@ -97,6 +105,8 @@ contract Grant{
 
         payable(user).transfer(_withdrawAmount);
 
+        emit _withdraw(amount, _withdrawAmount);
+
     }
 
 //* Function for owner to revert grant before timeelapsed
@@ -110,6 +120,7 @@ contract Grant{
         benefactor.grantrevert = true;
         payable(msg.sender).transfer(amount); // owner revert the total amount allocated for this grant;
 
+        emit _revert(_ticketNumber);
     }
 
 //* amount allocated check for beneficiary
