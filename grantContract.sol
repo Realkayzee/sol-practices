@@ -37,7 +37,7 @@ contract Grant{
         Status status;
     }
     uint[] allticketNumber; 
-    BeneficiaryProperties[] benefactor;
+    BeneficiaryProperties[] _benefactor;
 
     //* Mapping
 
@@ -123,12 +123,12 @@ contract Grant{
         benefactor = beneficiaryProperties[_ticketNumber];
     }
 //* Check all available grant in the contract
-    function checkAllBeneficiary() external view returns(BeneficiaryProperties[] memory _benefactor){
+    function checkAllBeneficiary() external view returns(BeneficiaryProperties[] memory benefactor){
         uint[] memory all = allticketNumber;
-        _benefactor = new BeneficiaryProperties[](all.length);
+        benefactor = new BeneficiaryProperties[](all.length);
 
         for(uint256 i = 0; i < all.length; i++){
-            _benefactor[i] = beneficiaryProperties[all[i]];
+            benefactor[i] = beneficiaryProperties[all[i]];
         }
     }
 
