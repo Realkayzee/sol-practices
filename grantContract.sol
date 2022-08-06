@@ -24,21 +24,24 @@ contract Grant{
         grantCancelled
     }
     error UserError(string);
+
     
 
 
     //* Structs
 
-    struct BenefeciaryProperties {
+    struct BeneficiaryProperties {
         address BeneficiaryAddress;
         uint AmountAllocated;
         uint timeAllocated;
         Status status;
     }
+    uint[] allticketNumber; 
+    BeneficiaryProperties[] benefactor;
 
     //* Mapping
 
-    mapping(uint => BenefeciaryProperties) beneficiaryProperties;
+    mapping(uint => BeneficiaryProperties) beneficiaryProperties;
 
 
 
@@ -50,6 +53,13 @@ contract Grant{
 
         _;
 
+    }
+
+    modifier lockedTime(uint _ticketNumber){
+        BeneficiaryProperties memory benefactor = beneficiaryProperties[_ticketNumber];
+        uint AllocatedTime = benefactor.timeAllocated;
+        require(block.timestamp > AllocatedTime, "Money still locked");
+        _;
     }
 
 
@@ -64,18 +74,19 @@ contract Grant{
     //**********************************Functions************************************/
 
     function createGrant(address _beneficiary, uint _time) external payable onlyOwner {
-        BenefeciaryProperties storage benefactor = beneficiaryProperties[ticketNumber];
+        BeneficiaryProperties storage benefactor = beneficiaryProperties[ticketNumber];
         benefactor.BeneficiaryAddress = _beneficiary;
         benefactor.AmountAllocated =  msg.value;
         benefactor.timeAllocated = block.timestamp + (_time * 1 hours); 
-
+        allticketNumber.push(ticketNumber);
 
         ticketNumber++; 
     }
 
 //* Beneficairy can decide to withdraw part or all the money allocated to him/her
-    function beneficiaryWithdraw(uint _ticketNumber, uint _withdrawAmount) external {
-        BenefeciaryProperties storage benefactor = beneficiaryProperties[_ticketNumber];
+//* Provided the locking period is over
+    function beneficiaryWithdraw(uint _ticketNumber, uint _withdrawAmount) external lockedTime(_ticketNumber) {
+        BeneficiaryProperties storage benefactor = beneficiaryProperties[_ticketNumber];
         address user = benefactor.BeneficiaryAddress;
         if(user != msg.sender){
             revert UserError("You are not a benefactor");
@@ -91,6 +102,34 @@ contract Grant{
 
         payable(user).transfer(_withdrawAmount);
 
+    }
+
+//* Function for owner to revert grant before timeelapsed
+    function revertGrant(uint _ticketNumber) external onlyOwner {
+        BeneficiaryProperties storage benefactor = beneficiaryProperties[_ticketNumber];
+        uint amount = benefactor.AmountAllocated;
+        benefactor.AmountAllocated = 0;
+        payable(msg.sender).transfer(amount); // owner revert the total amount allocated for this grant;
+
+    }
+
+//* amount allocated check for beneficiary
+    function checkAmountAllocated(uint _ticketNumber) external view returns (uint256 amount){
+        BeneficiaryProperties memory benefactor = beneficiaryProperties[_ticketNumber];
+        amount = benefactor.AmountAllocated;
+    }
+//* Check beneficiary properties with a ticketNumber
+    function checkBeneficiaryProp(uint _ticketNumber) external view returns(BeneficiaryProperties memory benefactor){
+        benefactor = beneficiaryProperties[_ticketNumber];
+    }
+//* Check all available grant in the contract
+    function checkAllBeneficiary() external view returns(BeneficiaryProperties[] memory _benefactor){
+        uint[] memory all = allticketNumber;
+        _benefactor = new BeneficiaryProperties[](all.length);
+
+        for(uint256 i = 0; i < all.length; i++){
+            _benefactor[i] = beneficiaryProperties[all[i]];
+        }
     }
 
 }
