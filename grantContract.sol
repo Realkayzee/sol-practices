@@ -3,12 +3,15 @@
 
 pragma solidity 0.8.7;
 
-//* A Contract where only owner gives grant to beneficiary
-//* For security check the grant is locked for a while before a benefeciary can withdraw 
-//* Owner of the grant have access to revert the grant before locked period elapsed
-//* Beneficiary can see the amount allocated before specifying amount to withdraw
-//* Owner can check the history of all grants
-//* Status of the grant is specified
+
+/// @title A Grant Contract
+/// @author Kayzee
+/// @notice Only owner can give grant to beneficiary
+/// @notice For security check the grant is locked for a while before a benefeciary can withdraw 
+/// @notice Owner of the grant have access to revert the grant before locked period elapsed
+/// @notice Beneficiary can see the amount allocated before specifying amount to withdraw
+/// @notice Owner can check the history of all grants
+/// @notice Status of the grant is specified
 
 contract Grant{
 
@@ -81,7 +84,7 @@ contract Grant{
         benefactor.grantCreated = true;
         allticketNumber.push(ticketNumber);
 
-        emit _createGrant(benefactor.BeneficiaryAddress, benefactor.timeAllocated, benefactor.AmountAllocated);
+        emit _createGrant(_beneficiary, benefactor.timeAllocated, benefactor.AmountAllocated);
 
         ticketNumber++; 
     }
