@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.9+commit.e5eed63a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"sol-practices/LibCast.sol": "Arithmetic"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"sol-practices/LibCast.sol": {
+			"keccak256": "0x2085ebb9159308fcc93e6d6daa4d1439539210fa64a07972240fb7edd053f405",
+			"urls": [
+				"bzz-raw://537d85c2611046a27eb6d5d815c371071262683c7af78720b681617451f84176",
+				"dweb:/ipfs/Qme7R27iDAxrkcs68KU3Pvgm16H3eW862yCanZBJ6hZytE"
+			]
+		}
+	},
+	"version": 1
+}

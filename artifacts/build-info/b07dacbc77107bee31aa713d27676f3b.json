@@ -1,0 +1,1167 @@
+{
+	"id": "b07dacbc77107bee31aa713d27676f3b",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.9",
+	"solcLongVersion": "0.8.9+commit.e5eed63a",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"sol-practices/LibCast.sol": {
+				"content": "uint256 constant SALARY=20000;\n\nstruct Workers{\n    uint8 count;\n    string name;\n}\nlibrary Arithmetic{\n\n\nfunction add(uint a,uint b) internal pure returns(uint){\n    return a+b;\n}\n\n\nfunction constructStruct(Workers storage w, uint8 _c,string memory _n,uint256 id,mapping(uint=>Workers) storage workers) internal {\nWorkers storage w=workers[id];\nw.count=_c;\nw.name=_n;\n\n}\n\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"sol-practices/LibCast.sol": {
+				"Arithmetic": {
+					"abi": [],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "    /* \"sol-practices/LibCast.sol\":84:374  library Arithmetic{... */\n  dataSize(sub_0)\n  dataOffset(sub_0)\n  0x0b\n  dup3\n  dup3\n  dup3\n  codecopy\n  dup1\n  mload\n  0x00\n  byte\n  0x73\n  eq\n  tag_1\n  jumpi\n  mstore(0x00, 0x4e487b7100000000000000000000000000000000000000000000000000000000)\n  mstore(0x04, 0x00)\n  revert(0x00, 0x24)\ntag_1:\n  mstore(0x00, address)\n  0x73\n  dup2\n  mstore8\n  dup3\n  dup2\n  return\nstop\n\nsub_0: assembly {\n        /* \"sol-practices/LibCast.sol\":84:374  library Arithmetic{... */\n      eq(address, deployTimeAddress())\n      mstore(0x40, 0x80)\n      0x00\n      dup1\n      revert\n\n    auxdata: 0xa2646970667358221220e1916e4793feb9075082ff6f6a6503c6a579689eaafaac91db0fd1dc4cd9ca2e64736f6c63430008090033\n}\n",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220e1916e4793feb9075082ff6f6a6503c6a579689eaafaac91db0fd1dc4cd9ca2e64736f6c63430008090033",
+							"opcodes": "PUSH1 0x56 PUSH1 0x50 PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH1 0x0 BYTE PUSH1 0x73 EQ PUSH1 0x43 JUMPI PUSH32 0x4E487B7100000000000000000000000000000000000000000000000000000000 PUSH1 0x0 MSTORE PUSH1 0x0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH1 0x0 REVERT JUMPDEST ADDRESS PUSH1 0x0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xE1 SWAP2 PUSH15 0x4793FEB9075082FF6F6A6503C6A579 PUSH9 0x9EAAFAAC91DB0FD1DC 0x4C 0xD9 0xCA 0x2E PUSH5 0x736F6C6343 STOP ADDMOD MULMOD STOP CALLER ",
+							"sourceMap": "84:290:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220e1916e4793feb9075082ff6f6a6503c6a579689eaafaac91db0fd1dc4cd9ca2e64736f6c63430008090033",
+							"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xE1 SWAP2 PUSH15 0x4793FEB9075082FF6F6A6503C6A579 PUSH9 0x9EAAFAAC91DB0FD1DC 0x4C 0xD9 0xCA 0x2E PUSH5 0x736F6C6343 STOP ADDMOD MULMOD STOP CALLER ",
+							"sourceMap": "84:290:0:-:0;;;;;;;;"
+						},
+						"gasEstimates": {
+							"creation": {
+								"codeDepositCost": "17200",
+								"executionCost": "97",
+								"totalCost": "17297"
+							},
+							"internal": {
+								"add(uint256,uint256)": "infinite",
+								"constructStruct(struct Workers storage pointer,uint8,string memory,uint256,mapping(uint256 => struct Workers storage ref))": "infinite"
+							}
+						},
+						"legacyAssembly": {
+							".code": [
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH #[$]",
+									"source": 0,
+									"value": "0000000000000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH [$]",
+									"source": 0,
+									"value": "0000000000000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "B"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "CODECOPY",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "DUP1",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "MLOAD",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "BYTE",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "73"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "EQ",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH [tag]",
+									"source": 0,
+									"value": "1"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "JUMPI",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "4E487B7100000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "4"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "24"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "REVERT",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "tag",
+									"source": 0,
+									"value": "1"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "JUMPDEST",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "ADDRESS",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "PUSH",
+									"source": 0,
+									"value": "73"
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "DUP2",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "MSTORE8",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "DUP2",
+									"source": 0
+								},
+								{
+									"begin": 84,
+									"end": 374,
+									"name": "RETURN",
+									"source": 0
+								}
+							],
+							".data": {
+								"0": {
+									".auxdata": "a2646970667358221220e1916e4793feb9075082ff6f6a6503c6a579689eaafaac91db0fd1dc4cd9ca2e64736f6c63430008090033",
+									".code": [
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "PUSHDEPLOYADDRESS",
+											"source": 0
+										},
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "ADDRESS",
+											"source": 0
+										},
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "EQ",
+											"source": 0
+										},
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "PUSH",
+											"source": 0,
+											"value": "80"
+										},
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "PUSH",
+											"source": 0,
+											"value": "40"
+										},
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "MSTORE",
+											"source": 0
+										},
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "PUSH",
+											"source": 0,
+											"value": "0"
+										},
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "DUP1",
+											"source": 0
+										},
+										{
+											"begin": 84,
+											"end": 374,
+											"name": "REVERT",
+											"source": 0
+										}
+									]
+								}
+							}
+						},
+						"methodIdentifiers": {}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"sol-practices/LibCast.sol\":\"Arithmetic\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"sol-practices/LibCast.sol\":{\"keccak256\":\"0x3a38360d74e71da9c1f32fd7a5d7b52066888acd6c3ee9bfa656c3e6c5bf94d2\",\"urls\":[\"bzz-raw://4538ba6b4661decaade699a4787af6bedc91bc5acdd0d7c9376f46b95d0d797e\",\"dweb:/ipfs/QmWT9GcEJrQBeisB86DbJYwzk88e3bV731UfiqMWjXzwQj\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"errors": [
+			{
+				"component": "general",
+				"errorCode": "1878",
+				"formattedMessage": "Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.\n--> sol-practices/LibCast.sol\n\n",
+				"message": "SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": -1,
+					"file": "sol-practices/LibCast.sol",
+					"start": -1
+				},
+				"type": "Warning"
+			},
+			{
+				"component": "general",
+				"errorCode": "3420",
+				"formattedMessage": "Warning: Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.9;\"\n--> sol-practices/LibCast.sol\n\n",
+				"message": "Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.9;\"",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": -1,
+					"file": "sol-practices/LibCast.sol",
+					"start": -1
+				},
+				"type": "Warning"
+			},
+			{
+				"component": "general",
+				"errorCode": "2519",
+				"formattedMessage": "Warning: This declaration shadows an existing declaration.\n  --> sol-practices/LibCast.sol:16:1:\n   |\n16 | Workers storage w=workers[id];\n   | ^^^^^^^^^^^^^^^^^\nNote: The shadowed declaration is here:\n  --> sol-practices/LibCast.sol:15:26:\n   |\n15 | function constructStruct(Workers storage w, uint8 _c,string memory _n,uint256 id,mapping(uint=>Workers) storage workers) internal {\n   |                          ^^^^^^^^^^^^^^^^^\n\n",
+				"message": "This declaration shadows an existing declaration.",
+				"secondarySourceLocations": [
+					{
+						"end": 225,
+						"file": "sol-practices/LibCast.sol",
+						"message": "The shadowed declaration is here:",
+						"start": 208
+					}
+				],
+				"severity": "warning",
+				"sourceLocation": {
+					"end": 332,
+					"file": "sol-practices/LibCast.sol",
+					"start": 315
+				},
+				"type": "Warning"
+			},
+			{
+				"component": "general",
+				"errorCode": "5667",
+				"formattedMessage": "Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.\n  --> sol-practices/LibCast.sol:15:26:\n   |\n15 | function constructStruct(Workers storage w, uint8 _c,string memory _n,uint256 id,mapping(uint=>Workers) storage workers) internal {\n   |                          ^^^^^^^^^^^^^^^^^\n\n",
+				"message": "Unused function parameter. Remove or comment out the variable name to silence this warning.",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": 225,
+					"file": "sol-practices/LibCast.sol",
+					"start": 208
+				},
+				"type": "Warning"
+			}
+		],
+		"sources": {
+			"sol-practices/LibCast.sol": {
+				"ast": {
+					"absolutePath": "sol-practices/LibCast.sol",
+					"exportedSymbols": {
+						"Arithmetic": [
+							60
+						],
+						"SALARY": [
+							3
+						],
+						"Workers": [
+							8
+						]
+					},
+					"id": 61,
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"constant": true,
+							"id": 3,
+							"mutability": "constant",
+							"name": "SALARY",
+							"nameLocation": "17:6:0",
+							"nodeType": "VariableDeclaration",
+							"scope": 61,
+							"src": "0:29:0",
+							"stateVariable": false,
+							"storageLocation": "default",
+							"typeDescriptions": {
+								"typeIdentifier": "t_uint256",
+								"typeString": "uint256"
+							},
+							"typeName": {
+								"id": 1,
+								"name": "uint256",
+								"nodeType": "ElementaryTypeName",
+								"src": "0:7:0",
+								"typeDescriptions": {
+									"typeIdentifier": "t_uint256",
+									"typeString": "uint256"
+								}
+							},
+							"value": {
+								"hexValue": "3230303030",
+								"id": 2,
+								"isConstant": false,
+								"isLValue": false,
+								"isPure": true,
+								"kind": "number",
+								"lValueRequested": false,
+								"nodeType": "Literal",
+								"src": "24:5:0",
+								"typeDescriptions": {
+									"typeIdentifier": "t_rational_20000_by_1",
+									"typeString": "int_const 20000"
+								},
+								"value": "20000"
+							},
+							"visibility": "internal"
+						},
+						{
+							"canonicalName": "Workers",
+							"id": 8,
+							"members": [
+								{
+									"constant": false,
+									"id": 5,
+									"mutability": "mutable",
+									"name": "count",
+									"nameLocation": "58:5:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 8,
+									"src": "52:11:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_uint8",
+										"typeString": "uint8"
+									},
+									"typeName": {
+										"id": 4,
+										"name": "uint8",
+										"nodeType": "ElementaryTypeName",
+										"src": "52:5:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_uint8",
+											"typeString": "uint8"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 7,
+									"mutability": "mutable",
+									"name": "name",
+									"nameLocation": "76:4:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 8,
+									"src": "69:11:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 6,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "69:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "Workers",
+							"nameLocation": "39:7:0",
+							"nodeType": "StructDefinition",
+							"scope": 61,
+							"src": "32:51:0",
+							"visibility": "public"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "Arithmetic",
+							"contractDependencies": [],
+							"contractKind": "library",
+							"fullyImplemented": true,
+							"id": 60,
+							"linearizedBaseContracts": [
+								60
+							],
+							"name": "Arithmetic",
+							"nameLocation": "92:10:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"body": {
+										"id": 21,
+										"nodeType": "Block",
+										"src": "161:19:0",
+										"statements": [
+											{
+												"expression": {
+													"commonType": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													},
+													"id": 19,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"leftExpression": {
+														"id": 17,
+														"name": "a",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 10,
+														"src": "174:1:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint256",
+															"typeString": "uint256"
+														}
+													},
+													"nodeType": "BinaryOperation",
+													"operator": "+",
+													"rightExpression": {
+														"id": 18,
+														"name": "b",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 12,
+														"src": "176:1:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint256",
+															"typeString": "uint256"
+														}
+													},
+													"src": "174:3:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 16,
+												"id": 20,
+												"nodeType": "Return",
+												"src": "167:10:0"
+											}
+										]
+									},
+									"id": 22,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "add",
+									"nameLocation": "115:3:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 13,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 10,
+												"mutability": "mutable",
+												"name": "a",
+												"nameLocation": "124:1:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 22,
+												"src": "119:6:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 9,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "119:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 12,
+												"mutability": "mutable",
+												"name": "b",
+												"nameLocation": "131:1:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 22,
+												"src": "126:6:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 11,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "126:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "118:15:0"
+									},
+									"returnParameters": {
+										"id": 16,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 15,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 22,
+												"src": "156:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 14,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "156:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "155:6:0"
+									},
+									"scope": 60,
+									"src": "106:74:0",
+									"stateMutability": "pure",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 58,
+										"nodeType": "Block",
+										"src": "313:58:0",
+										"statements": [
+											{
+												"assignments": [
+													41
+												],
+												"declarations": [
+													{
+														"constant": false,
+														"id": 41,
+														"mutability": "mutable",
+														"name": "w",
+														"nameLocation": "331:1:0",
+														"nodeType": "VariableDeclaration",
+														"scope": 58,
+														"src": "315:17:0",
+														"stateVariable": false,
+														"storageLocation": "storage",
+														"typeDescriptions": {
+															"typeIdentifier": "t_struct$_Workers_$8_storage_ptr",
+															"typeString": "struct Workers"
+														},
+														"typeName": {
+															"id": 40,
+															"nodeType": "UserDefinedTypeName",
+															"pathNode": {
+																"id": 39,
+																"name": "Workers",
+																"nodeType": "IdentifierPath",
+																"referencedDeclaration": 8,
+																"src": "315:7:0"
+															},
+															"referencedDeclaration": 8,
+															"src": "315:7:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_struct$_Workers_$8_storage_ptr",
+																"typeString": "struct Workers"
+															}
+														},
+														"visibility": "internal"
+													}
+												],
+												"id": 45,
+												"initialValue": {
+													"baseExpression": {
+														"id": 42,
+														"name": "workers",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 36,
+														"src": "333:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Workers_$8_storage_$",
+															"typeString": "mapping(uint256 => struct Workers storage ref)"
+														}
+													},
+													"id": 44,
+													"indexExpression": {
+														"id": 43,
+														"name": "id",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 31,
+														"src": "341:2:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint256",
+															"typeString": "uint256"
+														}
+													},
+													"isConstant": false,
+													"isLValue": true,
+													"isPure": false,
+													"lValueRequested": false,
+													"nodeType": "IndexAccess",
+													"src": "333:11:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Workers_$8_storage",
+														"typeString": "struct Workers storage ref"
+													}
+												},
+												"nodeType": "VariableDeclarationStatement",
+												"src": "315:29:0"
+											},
+											{
+												"expression": {
+													"id": 50,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"leftHandSide": {
+														"expression": {
+															"id": 46,
+															"name": "w",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 41,
+															"src": "346:1:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_struct$_Workers_$8_storage_ptr",
+																"typeString": "struct Workers storage pointer"
+															}
+														},
+														"id": 48,
+														"isConstant": false,
+														"isLValue": true,
+														"isPure": false,
+														"lValueRequested": true,
+														"memberName": "count",
+														"nodeType": "MemberAccess",
+														"referencedDeclaration": 5,
+														"src": "346:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint8",
+															"typeString": "uint8"
+														}
+													},
+													"nodeType": "Assignment",
+													"operator": "=",
+													"rightHandSide": {
+														"id": 49,
+														"name": "_c",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 27,
+														"src": "354:2:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint8",
+															"typeString": "uint8"
+														}
+													},
+													"src": "346:10:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint8",
+														"typeString": "uint8"
+													}
+												},
+												"id": 51,
+												"nodeType": "ExpressionStatement",
+												"src": "346:10:0"
+											},
+											{
+												"expression": {
+													"id": 56,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"leftHandSide": {
+														"expression": {
+															"id": 52,
+															"name": "w",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 41,
+															"src": "358:1:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_struct$_Workers_$8_storage_ptr",
+																"typeString": "struct Workers storage pointer"
+															}
+														},
+														"id": 54,
+														"isConstant": false,
+														"isLValue": true,
+														"isPure": false,
+														"lValueRequested": true,
+														"memberName": "name",
+														"nodeType": "MemberAccess",
+														"referencedDeclaration": 7,
+														"src": "358:6:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_string_storage",
+															"typeString": "string storage ref"
+														}
+													},
+													"nodeType": "Assignment",
+													"operator": "=",
+													"rightHandSide": {
+														"id": 55,
+														"name": "_n",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 29,
+														"src": "365:2:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_string_memory_ptr",
+															"typeString": "string memory"
+														}
+													},
+													"src": "358:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage",
+														"typeString": "string storage ref"
+													}
+												},
+												"id": 57,
+												"nodeType": "ExpressionStatement",
+												"src": "358:9:0"
+											}
+										]
+									},
+									"id": 59,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "constructStruct",
+									"nameLocation": "192:15:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 37,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 25,
+												"mutability": "mutable",
+												"name": "w",
+												"nameLocation": "224:1:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 59,
+												"src": "208:17:0",
+												"stateVariable": false,
+												"storageLocation": "storage",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_Workers_$8_storage_ptr",
+													"typeString": "struct Workers"
+												},
+												"typeName": {
+													"id": 24,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 23,
+														"name": "Workers",
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 8,
+														"src": "208:7:0"
+													},
+													"referencedDeclaration": 8,
+													"src": "208:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Workers_$8_storage_ptr",
+														"typeString": "struct Workers"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 27,
+												"mutability": "mutable",
+												"name": "_c",
+												"nameLocation": "233:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 59,
+												"src": "227:8:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint8",
+													"typeString": "uint8"
+												},
+												"typeName": {
+													"id": 26,
+													"name": "uint8",
+													"nodeType": "ElementaryTypeName",
+													"src": "227:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint8",
+														"typeString": "uint8"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 29,
+												"mutability": "mutable",
+												"name": "_n",
+												"nameLocation": "250:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 59,
+												"src": "236:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 28,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "236:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 31,
+												"mutability": "mutable",
+												"name": "id",
+												"nameLocation": "261:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 59,
+												"src": "253:10:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 30,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "253:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 36,
+												"mutability": "mutable",
+												"name": "workers",
+												"nameLocation": "295:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 59,
+												"src": "264:38:0",
+												"stateVariable": false,
+												"storageLocation": "storage",
+												"typeDescriptions": {
+													"typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Workers_$8_storage_$",
+													"typeString": "mapping(uint256 => struct Workers)"
+												},
+												"typeName": {
+													"id": 35,
+													"keyType": {
+														"id": 32,
+														"name": "uint",
+														"nodeType": "ElementaryTypeName",
+														"src": "272:4:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint256",
+															"typeString": "uint256"
+														}
+													},
+													"nodeType": "Mapping",
+													"src": "264:22:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Workers_$8_storage_$",
+														"typeString": "mapping(uint256 => struct Workers)"
+													},
+													"valueType": {
+														"id": 34,
+														"nodeType": "UserDefinedTypeName",
+														"pathNode": {
+															"id": 33,
+															"name": "Workers",
+															"nodeType": "IdentifierPath",
+															"referencedDeclaration": 8,
+															"src": "278:7:0"
+														},
+														"referencedDeclaration": 8,
+														"src": "278:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_struct$_Workers_$8_storage_ptr",
+															"typeString": "struct Workers"
+														}
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "207:96:0"
+									},
+									"returnParameters": {
+										"id": 38,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "313:0:0"
+									},
+									"scope": 60,
+									"src": "183:188:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "internal"
+								}
+							],
+							"scope": 61,
+							"src": "84:290:0",
+							"usedErrors": []
+						}
+					],
+					"src": "0:374:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
